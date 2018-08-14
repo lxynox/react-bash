@@ -2,18 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Terminal from '../src/index';
 
+const helpCommands = ['React-bash:', 'These shell commands are defined internally.  Type \'help\' to see this list.', <a target='nbaTab' href='https://www.nba.com/'>Visit NBA</a>];
+
 const extensions = {
+    help: {
+        exec: () => {
+            return {
+                history: helpCommands.map(value => ({ value }))
+            }
+        },
+    },
     sudo: {
-        exec: ({ structure, history, cwd }) => {
-            return { structure, cwd,
-                history: history.concat({ value: 'Nice try... (ಠ(ಠ(ಠ_ಠ)ಠ)ಠ)' }),
-            };
+        exec: ({ cwd, structure, history }) => {
+            return { structure, cwd, history }
         },
     },
 };
 
 const history = [
-    { value: 'Hackers will be high-fived. ( ‘-’)人(ﾟ_ﾟ )' },
+    { value: <a target='google' href='https://www.google.com'>Visit google</a> },
     { value: 'Type `help` to begin' },
 ];
 
