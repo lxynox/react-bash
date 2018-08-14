@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import * as BaseCommands from './commands';
 import Bash from './bash';
@@ -12,7 +12,7 @@ const DOWN_CHAR_CODE = 40;
 const TAB_CHAR_CODE = 9;
 const noop = () => {};
 
-export default class Terminal extends Component {
+export default class Terminal extends PureComponent {
 
     constructor({ history, structure, extensions, prefix }) {
         super();
@@ -47,13 +47,7 @@ export default class Terminal extends Component {
     }
 
     /*
-     * Utilize immutability
-     */
-    shouldComponentUpdate(nextProps, nextState) {
-        return (this.state !== nextState) || (this.props !== nextProps);
-    }
 
-    /*
      * Keep input in view on change
      */
     componentDidUpdate() {
