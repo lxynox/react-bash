@@ -17,7 +17,7 @@
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "gh-pages": "npm run build:demo && git add -f demo/dist && git commit -m \"deploy to gh-pages\" && git subtree split --prefix demo -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
     "prepublish": "npm run clean && npm run lint && npm run build",
-    "postinstall": "npm run build:commonjs"
+    "postinstall": "NODE_ENV=production webpack src/index.js lib/index.js"
   },
   "authors": [
     "Zack Argyle <zack.argyle@gmail.com> (https://github.com/zackargyle)"
