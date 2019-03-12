@@ -19,7 +19,7 @@ export default class Terminal extends PureComponent {
         this.Bash = new Bash(extensions);
         this.ctrlPressed = false;
         this.state = {
-            settings: { user: { username: prefix.split('@')[1] } },
+            settings: { user: { username: prefix.split('@')[0] } },
             history: history.slice(),
             structure: Object.assign({}, structure),
             cwd: '',
