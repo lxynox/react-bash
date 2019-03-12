@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import clonedeep from 'lodash.clonedeep';
+import merge from 'lodash.merge';
 import * as BaseCommands from './commands';
 import Bash from './bash';
 import Styles from './styles';
@@ -139,7 +139,7 @@ export default class Terminal extends PureComponent {
     render() {
         const { onClose, onExpand, onMinimize, prefix, styles, theme } = this.props;
         const { history, cwd } = this.state;
-        const style = clonedeep({}, Styles[theme] || Styles.light, styles);
+        const style = merge({}, Styles[theme] || Styles.light, styles);
         return (
             <div className="ReactBash" style={style.ReactBash}>
                 <div style={style.header}>
